@@ -1,0 +1,17 @@
+ private  void showUser(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            return;
+        }
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUri = user.getPhotoUrl();
+            String[] parts = email.split("@");
+            String userin = parts[0];
+            Glide.with(getActivity()).load(photoUri).error(R.drawable.ayna).into(imgAvatar);
+            textUsername.setVisibility(View.VISIBLE);
+            textUsername.setText("User: "+userin);
+            textGmail.setText("Email: " +email);
+    }
+Chức năng Show History View : Khóa Chính : Tài Khoản Đang Dùng Hiện Tại 
+- Tên Truyện Đã Xem Là Xong trong này bao gồm ( 1 image , 2 EditText) 
